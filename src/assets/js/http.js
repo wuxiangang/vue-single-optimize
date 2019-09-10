@@ -2,17 +2,29 @@ import flyio from 'flyio'
 import 'babel-polyfill'
 
 const APIS = {
-  internationCode: {
-    method: 'GET',
-    url: '/api/v1/web/coin/price'
-  },
-  refund: {
+  update: {
     method: 'POST',
-    url: '/web/api/refund'
+    url: '/update'
+  },
+  delete: {
+    method: 'POST',
+    url: '/delete'
+  },
+  insert: {
+    method: 'POST',
+    url: '/insert'
+  },
+  list: {
+    method: 'GET',
+    url: '/list'
+  },
+  uploads: {
+    method: 'POST',
+    url: '/uploads'
   }
 }
 
-flyio.config.baseURL = 'http://172.16.18.201:8080'
+flyio.config.baseURL = location.host.includes('localhost') ? 'http://localhost:8088' : 'http://118.190.53.117:8088'
 // flyio.config.withCredentials = true
 flyio.config.timeout = 100000
 flyio.config.responseType = 'json'
@@ -21,7 +33,7 @@ flyio.interceptors.request.use(config => {
   let contentType = 'application/json'
   // if (config.method === 'POST') contentType = 'application/x-www-form-urlencoded'
   config.headers['Content-Type'] = contentType
-  config.headers['Session'] = 'pkfkurqfnteycjagywyfkuxikqbqrcfd'
+  // config.headers['Session'] = 'pkfkurqfnteycjagywyfkuxikqbqrcfd'
   return config
 },
 error => {

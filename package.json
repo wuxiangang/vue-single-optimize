@@ -12,7 +12,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.12.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
